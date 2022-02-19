@@ -11,4 +11,9 @@ build-all:
 	@echo "[OK] App binary was created for all platforms!"
 
 run:
+ifneq ("$(wildcard $(./bin/webshell))","")
 	@./bin/webshell
+else
+	@go build -o ./bin/webshell main.go
+	@./bin/webshell
+endif
